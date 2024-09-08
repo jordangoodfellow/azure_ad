@@ -8,16 +8,17 @@ terraform {
  aws = {
       source  = "hashicorp/aws"
       version = "~> 4.18.0"
+      region = "us-east-2"
     } 
   
   }
 
   backend "s3" {
     bucket         	   = "goodfellow-tech-dev"
-    key              	   = "env://terraform.tfstate"
+    key              	   = "backend.tfstate"
     region         	   = "us-east-2"
     encrypt        	   = true
-    dynamodb_table = "terraform_state_lock"
+    dynamodb_table = "tf-backend"
   }
 }
 
